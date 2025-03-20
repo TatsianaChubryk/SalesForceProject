@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 
@@ -21,6 +22,9 @@ public class BaseTest implements ITestConstants, IConstants {
     HomePage homePage;
     LoginPage loginPage;
     NewAccountModalPage newAccountModalPage;
+    ContactsListPage contactsListPage;
+    ContactsPage contactsPage;
+    NewContactsModalPage newContactsModalPage;
 
     public void initPages() {
         accountPage = new AccountPage(driver);
@@ -28,6 +32,9 @@ public class BaseTest implements ITestConstants, IConstants {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         newAccountModalPage = new NewAccountModalPage(driver);
+        contactsListPage = new ContactsListPage(driver);
+        contactsPage = new ContactsPage(driver);
+        newContactsModalPage = new NewContactsModalPage(driver);
     }
 
     @BeforeMethod
