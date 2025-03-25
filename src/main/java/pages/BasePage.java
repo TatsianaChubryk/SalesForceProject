@@ -2,13 +2,11 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import waiters.Waiters;
 
 public class BasePage {
     WebDriver driver;
-
-    public BasePage() {
-
-    }
+    Waiters waiters = new Waiters();
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
