@@ -2,11 +2,11 @@ package tests;
 
 import constants.IConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 
@@ -25,6 +25,7 @@ public class BaseTest implements ITestConstants, IConstants {
     ContactsListPage contactsListPage;
     ContactsPage contactsPage;
     NewContactsModalPage newContactsModalPage;
+    SoftAssertions softAssertions;
 
     public void initPages() {
         accountPage = new AccountPage(driver);
@@ -35,6 +36,7 @@ public class BaseTest implements ITestConstants, IConstants {
         contactsListPage = new ContactsListPage(driver);
         contactsPage = new ContactsPage(driver);
         newContactsModalPage = new NewContactsModalPage(driver);
+        softAssertions = new SoftAssertions();
     }
 
     @BeforeMethod

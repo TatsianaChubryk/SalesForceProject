@@ -17,7 +17,8 @@
         <testng.version>7.4.0</testng.version>
         <webdrivermanager.version>5.9.3</webdrivermanager.version>
         <lombok.version>1.18.36</lombok.version>
-<!--        <suiteXmlFile>sauceDemo.xml</suiteXmlFile>-->
+        <assertj-core.version>3.27.3</assertj-core.version>
+        <!--        <suiteXmlFile>sauceDemo.xml</suiteXmlFile>-->
         <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
         <aspectjweaver.version>1.9.22</aspectjweaver.version>
         <allure-maven.version>2.10.0</allure-maven.version>
@@ -36,7 +37,10 @@
                     <!--                     <suiteXmlFiles> -->
                     <!--                         <suiteXmlFile>src/test/resources/${suiteXmlFile}</suiteXmlFile> -->
                     <!--                     </suiteXmlFiles> -->
-                    <argLine> -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar -Xmx256m </argLine>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar
+                        -Xmx256m
+                    </argLine>
                 </configuration>
                 <dependencies>
                     <!--  https://mvnrepository.com/artifact/org.aspectj/aspectjweaver  -->
@@ -66,6 +70,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+        </dependency>
+        <!--         https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
         </dependency>
         <!--  https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager  -->
         <dependency>

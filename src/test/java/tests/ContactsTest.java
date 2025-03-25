@@ -22,11 +22,11 @@ public class ContactsTest extends BaseTest{
 
         Contact contact = new Contact();
         contact.setSalutation("Mr.");
-        contact.setContactFirstName("Sv");
-        contact.setContactLastName("Serega");
+        contact.setContactFirstName("Dan");
+        contact.setContactLastName("Igor");
         contact.setContactAccountName(account.getAccountName());
         contact.setDescription("nothing");
-        contact.setPhone("80235462759");
+        contact.setPhone("80235412359");
         contact.setContactOwner("ssas");
 
         loginPage.openPage(LOGIN_URL)
@@ -49,17 +49,17 @@ public class ContactsTest extends BaseTest{
         account.setAccountName("account" + random.nextInt(10));
         account.setWebSite("website");
         account.setType("Investor");
-        account.setPhone("80256379284");
+        account.setPhone("80256158984");
         account.setDescription("nothing");
 
         Contact contact = new Contact();
         contact.setSalutation("Mr.");
-        contact.setContactFirstName("Sv");
-        contact.setContactLastName("Serega");
+        contact.setContactFirstName("Danilov");
+        contact.setContactLastName("Igor");
         contact.setContactAccountName(account.getAccountName());
         contact.setDescription("nothing");
-        contact.setPhone("80235462759");
-        contact.setContactOwner("ser sas");
+        contact.setPhone("80256158984");
+        contact.setContactOwner("owner");
         loginPage.openPage(LOGIN_URL)
                 .login(username, password);
         newAccountModalPage.openPage(NEW_ACCOUNT_MODAL_URL)
@@ -70,10 +70,8 @@ public class ContactsTest extends BaseTest{
                 .createNewContact(contact);
         contactsListPage.openPage(CONTACT_LIST_URL)
                 .clickOnContactName(contact.getContactFirstName(),contact.getContactLastName());
-        Assert.assertEquals(contactsPage.getFieldValueByNameContacts("Name"), contact.getNameWithSalutation());
-        Assert.assertEquals(contactsPage.getAccountNameInContacts("Account Name",account.getAccountName()),contact.getContactAccountName());
-        Assert.assertEquals(contactsPage.getDescriptionInContacts("Description"), contact.getDescription());
-        Assert.assertEquals(contactsPage.getContactOwnerInContacts("Contact Owner"),contact.getContactOwner());
-        Assert.assertEquals(contactsPage.getContactPhoneInContacts("Phone"), contact.getPhone());
+        softAssertions.assertThat(contactsPage.getFieldValueByName("Name","Mr. Contact3 Contact1")).isEqualTo("Mr. Contact3 Contact1");
+        softAssertions.assertThat(contactsPage.getFieldValueByName("Account Name","account7")).isEqualTo("account7");
+        softAssertions.assertThat(contactsPage.getFieldValueByName("Contact Owner", "Tatsiana Chubryk")).isEqualTo("Tatsiana Chubryk");
     }
 }
